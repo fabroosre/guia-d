@@ -13,7 +13,7 @@ export const usePromotions = () => {
       setError(null);
 
       const { data, error } = await supabase
-        .from<Promotion>('tabla_de_promociones')
+        const { data, error } = await supabase.from<Promotion, any>('tabla_de_promociones')
         .select('*')
         .order('created_at', { ascending: false });
 
