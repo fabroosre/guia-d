@@ -129,7 +129,7 @@ const parsearRubro = (valor: any): CategoriaRubro => {
 
 
   const detectado = rubrosPermitidos.find(r => r.toLowerCase() === stringValor.toLowerCase());
-  return detectado || 'OTRO';
+  return detectado || 'Comercios'; // Fallback a una categoría existente
 };
 
 const parsearUbicacion = (lat?: any, lng?: any, link?: string): UbicacionGPS | string => {

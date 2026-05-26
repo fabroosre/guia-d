@@ -79,8 +79,7 @@ export const LocalGuideBoard: React.FC = () => {
     'Servicios Particulares': '👤',
     'Institucional': '🏛️',
     'Deportes': '⚽',
-    'Entretenimiento y Ocio': '🎭',
-    'OTRO': '✨'
+    'Entretenimiento y Ocio': '🎭'
   };
 
 

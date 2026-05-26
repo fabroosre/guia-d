@@ -17,7 +17,6 @@ export const usePromotions = () => {
         .select('*')
         .order('created_at', { ascending: false })
         .returns<Promotion[]>();
-        .returns<Promotion[]>();
 
       if (error) throw error;
 
