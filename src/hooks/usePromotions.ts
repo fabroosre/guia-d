@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import type { Promotion } from '../types/Promotion';
 
@@ -7,20 +7,23 @@ export const usePromotions = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
-  const fetchPromotions = async () => {
+  const fetchPromotions = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
 
       const { data, error } = await supabase
-        .from<Promotion>('tabla_de_promociones')
+        .from('tabla_de_promociones')
         .select('*')
-        .order('created_at', { ascending: false });
+        .order('created_at', { ascending: false })
+        .returns<Promotion[]>();
 
       if (error) throw error;
 
+      const rawData = data;
       const now = new Date();
-      const activePromotions = (data ?? []).filter((promotion) => {
+
+      const activePromotions = (rawData ?? []).filter((promotion) => {
         if (promotion.activo === false) return false;
 
         if (promotion.fecha_inicio) {
@@ -43,7 +46,7 @@ export const usePromotions = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchPromotions();

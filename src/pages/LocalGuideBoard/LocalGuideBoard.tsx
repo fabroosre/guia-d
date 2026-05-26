@@ -20,7 +20,8 @@ const FILTROS_CATEGORIAS = [
   'Servicios Particulares',
   'Institucional',
   'Deportes',
-  'Entretenimiento y Ocio'
+  'Entretenimiento y Ocio',
+  'OTRO'
 ];
 
 
@@ -240,7 +241,7 @@ export const LocalGuideBoard: React.FC = () => {
 
               onChange={(e) => {
                 setBusqueda(e.target.value);
-                setCatSeleccionada('TODO');
+                setCatSeleccionada(null);
               }}
               className={styles.searchInput}
             />
