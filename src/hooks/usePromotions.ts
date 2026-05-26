@@ -17,10 +17,11 @@ export const usePromotions = () => {
         .select('*')
         .order('created_at', { ascending: false })
         .returns<Promotion[]>();
+        .returns<Promotion[]>();
 
       if (error) throw error;
 
-      const rawData = data;
+      const rawData = data as Promotion[] | null;
       const now = new Date();
 
       const activePromotions = (rawData ?? []).filter((promotion) => {
