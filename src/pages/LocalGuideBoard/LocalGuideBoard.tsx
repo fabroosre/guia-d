@@ -20,8 +20,7 @@ const FILTROS_CATEGORIAS = [
   'Servicios Particulares',
   'Institucional',
   'Deportes',
-  'Entretenimiento y Ocio',
-  'OTRO'
+  'Entretenimiento y Ocio'
 ];
 
 
